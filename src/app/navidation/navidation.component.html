@@ -1,0 +1,86 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="token">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <button mat-stroked-button>
+        <mat-icon aria-label="Side nav toggle icon" (click)="drawer.toggle()">menu</mat-icon>
+      </button>
+      
+    </mat-toolbar>
+    
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+       >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Chandu</span> 
+      
+      <!-- <div style="margin-left: 150px">
+        <button mat-raised-button color="primary" class="navebutton">Home</button>
+        <button mat-raised-button color="primary" class="navebutton">About</button>
+        <button mat-raised-button color="primary" class="navebutton">Service</button>
+        <button mat-raised-button color="primary" class="navebutton">Contect</button>
+
+        
+      </div> -->
+      <!-- <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="navebutton">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>LogOut</span>
+          </button>
+        </mat-menu>
+      </div> -->
+    </mat-toolbar>
+
+
+
+
+
+
+    
+    
+    <router-outlet></router-outlet>
+    
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<mat-sidenav-container class="sidenav-container" *ngIf="!token">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      
+      <span>Chandu</span>
+      
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

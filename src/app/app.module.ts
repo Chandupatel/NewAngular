@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 
 
 enableProdMode();
@@ -38,7 +39,8 @@ enableProdMode();
     NavidationComponent,
     DashbordComponent,
     DragDropComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent
   ],
   entryComponents:[DilogComponent],
   imports: [

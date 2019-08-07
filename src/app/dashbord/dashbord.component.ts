@@ -12,29 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashbord.component.css']
 })
 export class DashbordComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
-
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver, public diloge: MatDialog, private toastr: ToastrService,
-    private rout :Router) {
+  
+  constructor(public diloge: MatDialog, private toastr: ToastrService,private rout :Router) {
    
     }
 
@@ -56,6 +35,30 @@ export class DashbordComponent {
       this.rout.navigate(['/Login']);
   }
     
+  }
+
+  public imagePath;
+  imgURL: any;
+  public message: string;
+  numofinage = [];
+
+  preview(files) {
+    if (files.length === 0)
+      return;
+
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+      this.numofinage.push(this.imgURL);
+      console.log(' this.imgURL', this.imgURL);
+    }
   }
 
 }

@@ -27,7 +27,7 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 enableProdMode();
 @NgModule({
@@ -61,7 +61,8 @@ enableProdMode();
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    DragDropModule
+    DragDropModule,
+    NgbModule
   ],
   providers: [],
   

@@ -5,16 +5,21 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angu
 import { ToastrService } from 'ngx-toastr';
 import { DilogComponent } from '../dilog/dilog.component';
 import { Router } from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashbord',
   templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.css']
+  styleUrls: ['./dashbord.component.css'],
+   providers: [NgbCarouselConfig] 
 })
 export class DashbordComponent {
   
-  constructor(public diloge: MatDialog, private toastr: ToastrService,private rout :Router) {
-   
+  constructor(public diloge: MatDialog, private toastr: ToastrService, private rout: Router, config: NgbCarouselConfig) {
+    config.interval = 4000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
     }
 
   submit() {
@@ -56,9 +61,14 @@ export class DashbordComponent {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
-      this.numofinage.push(this.imgURL);
+      this.images.push(this.imgURL);
       console.log(' this.imgURL', this.imgURL);
     }
   }
-
+  images = [].map(() => Math.random());
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = false;
+  
 }
